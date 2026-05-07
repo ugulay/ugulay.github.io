@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HudSpeedo — Privacy Policy</title>
+  <style>
+    :root {
+      --bg: #0A0A0A;
+      --surface: #111111;
+      --border: #1E1E1E;
+      --accent: #00FF66;
+      --accent-dim: rgba(0, 255, 102, 0.10);
+      --text: #F0F0F0;
+      --muted: #888888;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 28px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .back {
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .back:hover { color: var(--accent); text-decoration: none; }
+
+    header h1 {
+      font-size: 20px;
+      font-weight: 800;
+      flex: 1;
+    }
+
+    header h1 span { color: var(--accent); }
+
+    .updated {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .intro {
+      background: var(--accent-dim);
+      border: 1px solid rgba(0, 255, 102, 0.2);
+      border-radius: 10px;
+      padding: 18px 20px;
+      font-size: 15px;
+      margin-bottom: 40px;
+      color: var(--text);
+    }
+
+    section { margin-bottom: 40px; }
+
+    h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    p { color: var(--muted); margin-bottom: 10px; font-size: 15px; }
+    p strong { color: var(--text); }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    ul li {
+      font-size: 15px;
+      color: var(--muted);
+      padding-left: 18px;
+      position: relative;
+    }
+
+    ul li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 24px 28px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 480px) {
+      header { padding: 20px 16px; }
+      main { padding: 32px 16px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="back" href="/hudspeedo/">&#8592; HudSpeedo</a>
+  <h1>Hud<span>Speedo</span></h1>
+  <span class="updated">Updated May 2025</span>
+</header>
+
+<main>
+
+  <div class="intro">
+    HudSpeedo does not collect, store, or transmit personal data. All ride data remains on your device.
+  </div>
+
+  <section>
+    <h2>Data We Collect</h2>
+    <p>HudSpeedo collects <strong>no personal information</strong>. The app does not require an account, email address, or any registration.</p>
+  </section>
+
+  <section>
+    <h2>Location Data</h2>
+    <p>Location access is used exclusively to calculate speed, distance, heading, and ride path <strong>on your device</strong>. Location data is:</p>
+    <ul>
+      <li>Never uploaded to any server</li>
+      <li>Never shared with third parties</li>
+      <li>Stored locally only if you choose to save a ride session</li>
+    </ul>
+    <p>Background location is used to keep ride recording accurate when the screen is off (<code>UIBackgroundModes: location</code>).</p>
+  </section>
+
+  <section>
+    <h2>Motion Sensors</h2>
+    <p>Accelerometer and gyroscope data is used to calculate lean angle and G-force in real time. This data is processed entirely on-device and is never stored or transmitted.</p>
+  </section>
+
+  <section>
+    <h2>In-App Purchases</h2>
+    <p>Purchase and subscription management is handled by Apple. HudSpeedo uses <strong>Adapty</strong> solely to validate entitlements (confirm Pro status). Adapty receives anonymous purchase event data only — no name, email, or device identifiers beyond what Apple provides for receipt validation.</p>
+    <p>Adapty's privacy policy: <a href="https://adapty.io/privacy" target="_blank" rel="noopener">adapty.io/privacy</a></p>
+  </section>
+
+  <section>
+    <h2>Analytics & Advertising</h2>
+    <p>HudSpeedo contains <strong>no advertising SDKs</strong>, no analytics trackers, and no third-party data collection beyond Adapty purchase validation described above.</p>
+  </section>
+
+  <section>
+    <h2>Data Retention & Deletion</h2>
+    <p>All ride history is stored locally on your device using device storage. To delete all data, uninstall the app. There is no server-side data to request deletion of.</p>
+  </section>
+
+  <section>
+    <h2>Children</h2>
+    <p>HudSpeedo is not directed at children under 13 and does not knowingly collect any information from children.</p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Questions about this policy: <a href="mailto:ugurgulay@gmail.com">ugurgulay@gmail.com</a></p>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2025 HudSpeedo &nbsp;·&nbsp; <a href="/hudspeedo/support">Support</a>
+</footer>
+
+</body>
+</html>

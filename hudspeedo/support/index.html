@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HudSpeedo Support</title>
+  <style>
+    :root {
+      --bg: #0A0A0A;
+      --surface: #111111;
+      --border: #1E1E1E;
+      --accent: #00FF66;
+      --accent-dim: rgba(0, 255, 102, 0.12);
+      --text: #F0F0F0;
+      --muted: #888888;
+      --danger: #FF4D00;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header ── */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 32px 24px 28px;
+      text-align: center;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .logo-name {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-name span { color: var(--accent); }
+
+    header p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-top: 4px;
+    }
+
+    /* ── Layout ── */
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    section { margin-bottom: 56px; }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h2 .tag {
+      display: inline-block;
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    /* ── FAQ ── */
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 600;
+      text-align: left;
+      padding: 16px 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .faq-q:hover { color: var(--accent); }
+
+    .faq-chevron {
+      color: var(--muted);
+      font-size: 12px;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--accent); }
+
+    .faq-a {
+      display: none;
+      padding: 0 20px 16px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .faq-item.open .faq-a { display: block; }
+
+    /* ── Contact card ── */
+    .contact-card {
+      background: var(--accent-dim);
+      border: 1px solid rgba(0, 255, 102, 0.25);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .contact-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .contact-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: opacity 0.15s;
+    }
+
+    .btn:hover { opacity: 0.85; text-decoration: none; }
+
+    /* ── Info grid ── */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+    }
+
+    .info-card .label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 4px;
+    }
+
+    .info-card .value {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    /* ── Privacy list ── */
+    .privacy-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .privacy-list li {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 14px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .privacy-list li::before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .privacy-list li.no::before {
+      content: "✗";
+      color: var(--danger);
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 480px) {
+      .contact-card { flex-direction: column; }
+      header { padding: 24px 16px 20px; }
+      main { padding: 32px 16px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">🏎</div>
+    <div class="logo-name">Hud<span>Speedo</span></div>
+  </div>
+  <p>Motorcycle Telemetry Dashboard — Support</p>
+</header>
+
+<main>
+
+  <!-- App Info -->
+  <section>
+    <h2><span class="tag">App</span> About HudSpeedo</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="label">Platform</div>
+        <div class="value">iOS 18+</div>
+      </div>
+      <div class="info-card">
+        <div class="label">Category</div>
+        <div class="value">Navigation / Tools</div>
+      </div>
+      <div class="info-card">
+        <div class="label">Data Storage</div>
+        <div class="value">Local on-device only</div>
+      </div>
+      <div class="info-card">
+        <div class="label">Login Required</div>
+        <div class="value">No</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <h2><span class="tag">FAQ</span> Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        Why isn't GPS working or showing 0 km/h?
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-a">
+        GPS requires a real device — it does not work on iPhone Simulator. Make sure Location Services are enabled for HudSpeedo (<strong>Settings → Privacy & Security → Location Services → HudSpeedo → While Using</strong>). For best accuracy, use the app outdoors with an unobstructed sky view.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        The app shows speed but lean angle isn't updating.
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-a">
+        Lean angle uses the device's motion sensors. Make sure the phone is mounted firmly on the bike (not in a pocket). If lean reads incorrectly, use the calibration option in Settings to reset the zero point on flat ground.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        My ride stops recording when the screen turns off.
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-a">
+        HudSpeedo uses background location to keep recording with the screen off. Go to <strong>Settings → Privacy & Security → Location Services → HudSpeedo</strong> and set it to <strong>Always</strong>. Also disable Low Power Mode during rides, as it can throttle background activity.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        How do I restore my Pro purchase on a new device?
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-a">
+        Open HudSpeedo → Settings → scroll to the bottom and tap <strong>Restore Purchases</strong>. Sign in with the same Apple ID you used when purchasing. Your Pro access will be restored automatically.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        What does Pro include?
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-a">
+        Pro unlocks: full ride history (unlimited), advanced telemetry overlays (compass, heading, lean angle, elevation, G-force, split times), HD social export, GPX export, watermark removal, and exclusive color themes (Racing Red, Stealth, Neon Blue, Gold). Available as monthly, annual, or lifetime purchase.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        How do I cancel my subscription?
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-a">
+        Subscriptions are managed by Apple. Go to <strong>Settings → [Your Name] → Subscriptions</strong> on your iPhone, find HudSpeedo, and tap Cancel Subscription. You keep Pro access until the end of the paid period.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        The speed reading seems inaccurate or jumpy.
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-a">
+        GPS accuracy depends on signal quality. Enable speed smoothing in Settings (Pro feature) to reduce jitter. Ensure the phone has a clear view of the sky — avoid dense urban canyons or tunnels for best results.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        How do I export a ride as GPX?
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-a">
+        GPX export is a Pro feature. In the Ride History screen, tap a completed ride, then tap the Share icon and choose <strong>Export GPX</strong>. The file can be opened in any compatible mapping or fitness app.
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Contact -->
+  <section>
+    <h2><span class="tag">Contact</span> Get Help</h2>
+    <div class="contact-card">
+      <div class="contact-icon">✉️</div>
+      <div>
+        <h3>Email Support</h3>
+        <p>Describe your issue, include your iOS version and iPhone model. We typically reply within 1–2 business days.</p>
+        <a class="btn" href="mailto:ugurgulay@gmail.com?subject=HudSpeedo%20Support">Send Email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy -->
+  <section>
+    <h2><span class="tag">Privacy</span> Data & Permissions</h2>
+    <ul class="privacy-list">
+      <li>All ride data is stored locally on your device — never uploaded to any server.</li>
+      <li>Location data is used only to calculate speed, distance, and heading on-device.</li>
+      <li>Motion sensor data (gyroscope/accelerometer) stays on-device for lean angle calculation.</li>
+      <li class="no">No account or login is required — ever.</li>
+      <li class="no">No advertising SDKs or tracking pixels.</li>
+      <li class="no">No selling or sharing of personal data with third parties.</li>
+      <li>Anonymous purchase events are sent to Adapty solely for subscription validation.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2025 HudSpeedo &nbsp;·&nbsp;
+  <a href="mailto:ugurgulay@gmail.com">ugurgulay@gmail.com</a>
+</footer>
+
+<script>
+  function toggle(btn) {
+    btn.closest('.faq-item').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
