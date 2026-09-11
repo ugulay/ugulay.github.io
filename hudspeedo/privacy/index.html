@@ -134,7 +134,7 @@
 <main>
 
   <div class="intro">
-    HudSpeedo has no accounts and no server of its own. Your rides are recorded and kept on your device. Two features send location-derived requests to third parties, and both are described below.
+    HudSpeedo has no accounts and no server of its own. Your rides are recorded and kept on your device. One feature sends location-derived requests to a third party, and it is described below.
   </div>
 
   <section>
@@ -145,9 +145,8 @@
   <section>
     <h2>Location Data</h2>
     <p>Location access is used to calculate speed, distance, heading and ride path. That work happens <strong>on your device</strong>, and your ride history &mdash; every saved route, including the one drawn on the map &mdash; is stored only on your device and is never uploaded.</p>
-    <p>Two features do send requests derived from your location to third parties. Neither receives your ride history, your identity, or any account information:</p>
+    <p>One feature does send requests derived from your location to a third party. It receives no ride history, no identity and no account information:</p>
     <ul>
-      <li><strong>Speed camera alerts.</strong> To find fixed cameras near you, the app asks the OpenStreetMap Overpass API which cameras lie inside a box around you. That box is centred on a coarse grid cell roughly 28&nbsp;km across rather than on your exact position, so the request says which area you are in, not where you are. The feature is on by default and can be switched off in Settings, after which no request is made.</li>
       <li><strong>Route maps.</strong> Opening the map for a saved ride requests map tiles for the area shown from OpenFreeMap, as any map application does. This reveals which area is being looked at.</li>
     </ul>
     <p>Ride recording continues while the screen is off. On Android this runs as a location foreground service with a visible notification. On iOS it uses background location, for which the app asks permission separately.</p>
@@ -168,7 +167,6 @@
     <h2>Third-Party Services</h2>
     <p>These are the only services the app contacts:</p>
     <ul>
-      <li><strong>OpenStreetMap Overpass API</strong> &mdash; speed camera lookups, while that feature is switched on</li>
       <li><strong>OpenFreeMap</strong> &mdash; map tiles for route maps</li>
       <li><strong>Adapty</strong> &mdash; purchase validation</li>
     </ul>
@@ -181,7 +179,7 @@
 
   <section>
     <h2>Data Retention &amp; Deletion</h2>
-    <p>Ride history, your settings and a cached list of nearby speed cameras are stored on your device. Settings has an action that deletes your saved rides; uninstalling the app removes everything, including settings and the cache. There is no account and no server-side profile to request deletion of.</p>
+    <p>Ride history and your settings are stored on your device. Settings has an action that deletes your saved rides; uninstalling the app removes everything. There is no account and no server-side profile to request deletion of.</p>
   </section>
 
   <section>
