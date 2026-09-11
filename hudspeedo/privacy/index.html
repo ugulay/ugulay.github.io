@@ -128,55 +128,65 @@
 <header>
   <a class="back" href="/hudspeedo/">&#8592; HudSpeedo</a>
   <h1>Hud<span>Speedo</span></h1>
-  <span class="updated">Updated May 2026</span>
+  <span class="updated">Updated September 2026</span>
 </header>
 
 <main>
 
   <div class="intro">
-    HudSpeedo does not collect, store, or transmit personal data. All ride data remains on your device.
+    HudSpeedo has no accounts and no server of its own. Your rides are recorded and kept on your device. Two features send location-derived requests to third parties, and both are described below.
   </div>
 
   <section>
     <h2>Data We Collect</h2>
-    <p>HudSpeedo collects <strong>no personal information</strong>. The app does not require an account, email address, or any registration.</p>
+    <p>HudSpeedo collects <strong>no personal information</strong>. There is no account, no email address and no registration, and the app operates no server of its own.</p>
   </section>
 
   <section>
     <h2>Location Data</h2>
-    <p>Location access is used exclusively to calculate speed, distance, heading, and ride path <strong>on your device</strong>. Location data is:</p>
+    <p>Location access is used to calculate speed, distance, heading and ride path. That work happens <strong>on your device</strong>, and your ride history &mdash; every saved route, including the one drawn on the map &mdash; is stored only on your device and is never uploaded.</p>
+    <p>Two features do send requests derived from your location to third parties. Neither receives your ride history, your identity, or any account information:</p>
     <ul>
-      <li>Never uploaded to any server</li>
-      <li>Never shared with third parties</li>
-      <li>Stored locally only if you choose to save a ride session</li>
+      <li><strong>Speed camera alerts.</strong> To find fixed cameras near you, the app asks the OpenStreetMap Overpass API which cameras lie inside a box around you. That box is centred on a coarse grid cell roughly 28&nbsp;km across rather than on your exact position, so the request says which area you are in, not where you are. The feature is on by default and can be switched off in Settings, after which no request is made.</li>
+      <li><strong>Route maps.</strong> Opening the map for a saved ride requests map tiles for the area shown from OpenFreeMap, as any map application does. This reveals which area is being looked at.</li>
     </ul>
-    <p>Background location is used to keep ride recording accurate when the screen is off (<code>UIBackgroundModes: location</code>).</p>
+    <p>Ride recording continues while the screen is off. On Android this runs as a location foreground service with a visible notification. On iOS it uses background location, for which the app asks permission separately.</p>
   </section>
 
   <section>
     <h2>Motion Sensors</h2>
-    <p>Accelerometer and gyroscope data is used to calculate lean angle and G-force in real time. This data is processed entirely on-device and is never stored or transmitted.</p>
+    <p>Accelerometer and gyroscope readings are used to calculate lean angle and G-force in real time. This data is processed entirely on-device and is never transmitted.</p>
   </section>
 
   <section>
-    <h2>In-App Purchases</h2>
-    <p>Purchase and subscription management is handled by Apple. HudSpeedo uses <strong>Adapty</strong> solely to validate entitlements (confirm Pro status). Adapty receives anonymous purchase event data only — no name, email, or device identifiers beyond what Apple provides for receipt validation.</p>
-    <p>Adapty's privacy policy: <a href="https://adapty.io/privacy" target="_blank" rel="noopener">adapty.io/privacy</a></p>
+    <h2>Purchases</h2>
+    <p>HudSpeedo PRO is a single one-time purchase. There is no subscription and nothing renews. Payment is handled by Google Play or the App Store, and the app never sees your payment details.</p>
+    <p>HudSpeedo uses <strong>Adapty</strong> to confirm that a purchase is valid and that PRO should be unlocked. Adapty receives purchase events and an identifier it associates with your installation. Adapty's privacy policy: <a href="https://adapty.io/privacy" target="_blank" rel="noopener">adapty.io/privacy</a></p>
   </section>
 
   <section>
-    <h2>Analytics & Advertising</h2>
-    <p>HudSpeedo contains <strong>no advertising SDKs</strong>, no analytics trackers, and no third-party data collection beyond Adapty purchase validation described above.</p>
+    <h2>Third-Party Services</h2>
+    <p>These are the only services the app contacts:</p>
+    <ul>
+      <li><strong>OpenStreetMap Overpass API</strong> &mdash; speed camera lookups, while that feature is switched on</li>
+      <li><strong>OpenFreeMap</strong> &mdash; map tiles for route maps</li>
+      <li><strong>Adapty</strong> &mdash; purchase validation</li>
+    </ul>
   </section>
 
   <section>
-    <h2>Data Retention & Deletion</h2>
-    <p>All ride history is stored locally on your device using device storage. To delete all data, uninstall the app. There is no server-side data to request deletion of.</p>
+    <h2>Advertising &amp; Analytics</h2>
+    <p>HudSpeedo contains <strong>no advertising SDKs</strong> and shows no ads. It carries no general-purpose analytics or tracking SDK. Adapty, described above, does record purchase events for revenue reporting; that is the extent of it.</p>
+  </section>
+
+  <section>
+    <h2>Data Retention &amp; Deletion</h2>
+    <p>Ride history, your settings and a cached list of nearby speed cameras are stored on your device. Settings has an action that deletes your saved rides; uninstalling the app removes everything, including settings and the cache. There is no account and no server-side profile to request deletion of.</p>
   </section>
 
   <section>
     <h2>Children</h2>
-    <p>HudSpeedo is not directed at children under 13 and does not knowingly collect any information from children.</p>
+    <p>HudSpeedo is not directed at children and does not knowingly collect any information from children.</p>
   </section>
 
   <section>
